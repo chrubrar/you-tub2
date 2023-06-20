@@ -1,6 +1,9 @@
 import SideNavigation from './SideNavigation'
 import TopNavigation from './TopNavigation'
 import './globals.css'
+import Script from 'next/script'
+const GTM_ID = 'G-G6H3JY8717';
+
 
 
 export const metadata = {
@@ -15,15 +18,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${GTM_ID}');
+        `}
+      </Script>
       <body className="bg-zinc-900 text-zinc-200">
-        <div className= "flex flex-col  h-screen">
+        <div className="flex flex-col  h-screen">
           <TopNavigation />
           <div className="flex flex-1">
             <SideNavigation />
-          {children}
+            {children}
           </div>
         </div>
-        </body>
+      </body>
     </html>
   )
 }
