@@ -28,6 +28,8 @@ export default function RootLayout({
         `}
       </Script>
       <body className="bg-zinc-900 text-zinc-200">
+
+
         <div className="flex flex-col  h-screen">
           <TopNavigation />
           <div className="flex flex-1">
