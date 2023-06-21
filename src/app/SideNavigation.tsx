@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation"
 import { BsCollectionPlay } from "react-icons/bs"
 import { AiOutlineYoutube } from "react-icons/ai"
 import { SiYoutubemusic } from "react-icons/si"
+import { ImSpinner3 } from "react-icons/im"
 
 interface MenuItem {
     id: number;
@@ -21,7 +22,7 @@ interface MenuItem {
 
 const MenuItems: Array<MenuItem> = [
     {
-        id:1,
+        id: 1,
         icon: HiHome,
         text: "Home",
         pathname: "/"
@@ -37,10 +38,10 @@ const MenuItems: Array<MenuItem> = [
         icon: BsCollectionPlay,
         text: "Subscriptions",
         pathname: "/feed/subscriptions"
-        
+
 
     },
-  
+
     {
         id: 4,
         icon: MdOutlineVideoLibrary,
@@ -56,10 +57,19 @@ const MenuItems: Array<MenuItem> = [
     },
 
     {
-        id:6,
+        id: 6,
         icon: SiYoutubemusic,
         text: "Youtube Music",
         pathname: "music"
+
+    },
+
+    {
+        id: 7,
+        icon: ImSpinner3,
+        text: "Spinner",
+        pathname: 'spinnerIcon'
+
 
     }
 
@@ -72,38 +82,38 @@ const SideNavigation = () => {
     const router = useRouter();
 
 
-    const handleItemClick= (item: MenuItem) => {
+    const handleItemClick = (item: MenuItem) => {
         router.push(item.pathname);
-     
-     
-      
-     console.log(item.pathname===pathname);
+
+
+
+        console.log(item.pathname === pathname);
 
     }
 
-    const waveHello = ()=>{
+    const waveHello = () => {
         console.log('wave hello');
 
     }
 
-  return (
-  <div className="p-[4px] lg:px-2 lg:w-[460px]"> 
-  {MenuItems.map((item) => (
-    <div key={item.id}>
-    <div className={`flex flex-col lg:flex-row gap-1 lg:gap-6  p-4 lg:py-2 items-center hover:bg-zinc-700 
-    ${item.pathname===pathname && 'bg-zinc-500 hover:bg-zinc-400'} 
+    return (
+        <div className="p-[4px] lg:px-2 lg:w-[460px]">
+            {MenuItems.map((item) => (
+                <div key={item.id}>
+                    <div className={`flex flex-col lg:flex-row gap-1 lg:gap-6  p-4 lg:py-2 items-center hover:bg-zinc-700 
+    ${item.pathname === pathname && 'bg-zinc-500 hover:bg-zinc-400'} 
     rounded-lg cursor-pointer`}
-    onClick= {()=> handleItemClick(item)}>
-            <item.icon size={28} />
-            <span className="text-xs lg:text-base">{item.text}</span>
+                        onClick={() => handleItemClick(item)}>
+                        <item.icon size={28} />
+                        <span className="text-xs lg:text-base">{item.text}</span>
 
 
-    </div>
-    </div>
-  ))}
-  
-  </div>
-  );
+                    </div>
+                </div>
+            ))}
+
+        </div>
+    );
 };
 
 export default SideNavigation
